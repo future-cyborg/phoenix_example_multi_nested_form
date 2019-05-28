@@ -1,0 +1,26 @@
+<h1>Listing Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for post <- @posts do %>
+    <tr>
+      <td><%= post.text %></td>
+
+      <td>
+        <%= link "Show",   to: Routes.live_path(@socket, PostLive.Show, post) %>
+        <%= link "Edit",   to: Routes.live_path(@socket, PostLive.Edit, post) %>
+        <%= link "Delete", to: "#", phx_click: "delete_post", phx_value: post.id, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Post", to: Routes.live_path(@socket, PostLive.New) %></span>

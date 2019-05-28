@@ -1,0 +1,13 @@
+<h1>Show Post</h1>
+
+<ul>
+
+  <li>
+    <strong>Text:</strong>
+    <%= @post.text %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.live_path(@socket, PostLive.Edit, @post) %></span>
+<span><%= link "Back", to: Routes.live_path(@socket, PostLive.Index) %></span>

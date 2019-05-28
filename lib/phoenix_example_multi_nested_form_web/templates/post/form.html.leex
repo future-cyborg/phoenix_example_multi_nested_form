@@ -1,0 +1,18 @@
+<%= form_for @post_changeset, "#", [phx_change: :validate, phx_submit: :save], fn f -> %>
+
+  <%= label f, :text %>
+  <%= textarea f, :text %>
+  <%= error_tag f, :text %>
+
+  <%= inputs_for f, :comments, fn cf -> %>
+    <h3>Comment</h3>
+    <%= label cf, :text %>
+    <%= text_input cf, :text %>
+    <%= error_tag cf, :text %>
+  <% end %>
+  <button phx-click="add_comment">Add comment</button>
+
+  <div>
+    <%= submit "Save", phx_disable_with: "Saving..." %>
+  </div>
+<% end %>
